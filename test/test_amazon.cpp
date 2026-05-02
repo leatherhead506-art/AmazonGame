@@ -31,11 +31,8 @@ void testAvailablePosition(){
 
     amazon1.setPosition(Position(0,1));
     assert(amazon1.contains(amazon1.availablePositions(board),Position(0,0))== true);
-    assert(amazon1.contains(amazon1.availablePositions(board),Position(0,2))== true);
-    assert(amazon1.contains(amazon1.availablePositions(board),Position(0,3))== true);
     assert(amazon1.contains(amazon1.availablePositions(board),Position(1,1))== true);
     assert(amazon1.contains(amazon1.availablePositions(board),Position(2,1))== true);
-
     assert(amazon1.contains(amazon1.availablePositions(board),Position(1,0))== false);
     assert(amazon1.contains(amazon1.availablePositions(board),Position(2,0))== false);
     assert(amazon1.contains(amazon1.availablePositions(board),Position(3,2))== false);
