@@ -4,28 +4,70 @@
 #include <iostream>
 
 
+Player p1(PlayerID::Player1);
+Player p2(PlayerID::Player2);
+Board board(p1, p2);
+
+
+
+void testSetAmazonPosition(){
+    
+}
 
 
 
 
+void testSetPiece(){
+    board.setPiece(Piece::ARROW,Position(0,4));
+    assert(board.isEmpty(Position(0,4)) == false);
+    board.setPiece(Piece::AMAZON,Position(1,1));
+    assert(board.isEmpty(Position(1,1)) == false);
+    board.setPiece(Piece::EMPTY,Position(1,1));
+    assert(board.isEmpty(Position(1,1)) == true);
+}
 
+
+
+void testIsOutOfBound(){
+
+}
+
+
+
+
+void testIsGameEnded(){
+
+}
+
+
+
+
+void testIsEmpty(){
+    board.setPiece(Piece::ARROW,Position(0,4));
+    assert(board.isEmpty(Position(0,4)) == false);
+    board.setPiece(Piece::AMAZON,Position(1,1));
+    assert(board.isEmpty(Position(1,1)) == false);
+    board.setPiece(Piece::EMPTY,Position(1,1));
+    assert(board.isEmpty(Position(1,1)) == true);
+}
 
 
 
 
 int main(){
 
-    Player p1(PlayerID::Player1);
-    Player p2(PlayerID::Player2);
-    Board board(p1, p2);
+    testSetPiece();
+    testIsEmpty();
 
-    std::cout<< board.toString(8,8) << std::endl;
-    Amazon amazonTest(Position(0,2),p1);
-    Position newPos(0,3);
-    Position arrowPos(0,4);
-    board.update(amazonTest,newPos,arrowPos);
 
+    std::cout << "All Amazon tests passed ✅" << std::endl;
     std::cout<< board.toString(8,8) << std::endl;
+
+
+
+    
+
+    
 
     return 0;
 }
