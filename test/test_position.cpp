@@ -1,5 +1,5 @@
-#include "../src/Position.h"
-#include "../src/Board.h"
+#include "../src/model/Position.h"
+#include "../src/model/board/Board.h"
 #include <cassert>
 #include <iostream>
 

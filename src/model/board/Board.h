@@ -5,7 +5,7 @@
 #include<string>
 
 #include "Piece.h"
-#include "Player.h"
+#include "../player/Player.h"
 #include "Amazon.h"
 
 class Position;
