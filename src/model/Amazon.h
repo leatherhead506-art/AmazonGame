@@ -4,7 +4,7 @@
 #include<vector>
 
 #include "Piece.h"
-#include "Player.h"
+#include "player/Player.h"
 #include "Position.h"
 
 

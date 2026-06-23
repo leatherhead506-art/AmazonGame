@@ -1,6 +1,6 @@
 #include "Amazon.h"
 #include "Direction.h"
-#include "Board.h"
+#include "board/Board.h"
 #include<iostream>  
 
 Amazon::Amazon(const Position& position,const Player& player):

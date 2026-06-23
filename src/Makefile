@@ -1,46 +1,33 @@
-# Makefile pour Glfw avec GLAD
-#
-# CC BY-SA Edouard.Thiel@univ-amu.fr - 04/01/2025
-#
-# Installation des packages :
-#   sudo apt install libglfw3-dev libgl1-mesa-dev
-#
-# Pour tout compiler, tapez : make all
-# Pour tout compiler en parallèle, tapez : make -j all
-# pour supprimer les .o et exécutables : make clean
-# Pour tout recompiler : make clean all
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -I.
 
-SHELL    = /bin/bash
-RM       = rm -f
-CPP      = g++
-CPPFLAGS = -Wall -O2 -fno-strict-aliasing --std=c++17  # -g pour gdb
-LIBS     = -lglfw -lGLU -lGL -lm -ldl
-CC       = gcc
-CFLAGS   = -Wall -O2
+TARGET = main
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+# SOURCES
+SRC = main.cpp \
+      controller/GUIController.cpp \
+      controller/TerminalController.cpp \
+      model/Amazon.cpp \
+      model/Direction.cpp \
+      model/Position.cpp \
+      model/player/Player.cpp \
+      model/board/Board.cpp
 
-# Fichiers à compiler :
-# chaque fichier .cpp produira un exécutable du même nom
-CFILES  := $(wildcard *.cpp)
-EXECS   := $(CFILES:%.cpp=%)
+# OBJECTS (dans un dossier build propre)
+OBJ = $(SRC:.cpp=.o)
 
-# Règle pour fabriquer les .o à partir des .cpp
-%.o : %.cpp
-	$(CPP) $(CPPFLAGS) -c $*.cpp
+# BUILD
+all: $(TARGET)
 
-# Règle pour fabriquer les .o à partir des .c
-%.o : %.c
-	$(CC) $(CFLAGS) -c $*.c
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET) $(LIBS)
 
-# Déclaration des cibles factices
-.PHONY : all clean
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Règle pour produire tous les exécutables.
-all : $(EXECS)
+clean:
+	rm -f $(OBJ) $(TARGET)
 
-# Règle de production de chaque exécutable
-$(EXECS) : % : %.o glad.o
-	$(CPP) -o $@ $^ $(LIBS)
+re: clean all
 
-# Règle de nettoyage - AUTOCLEAN
-clean :
-	$(RM) *.o *~ $(EXECS) tmp*.*
+.PHONY: all clean re

@@ -4,9 +4,9 @@
 #include<vector>
 #include<string>
 
-#include "Piece.h"
+#include "../Piece.h"
 #include "../player/Player.h"
-#include "Amazon.h"
+#include "../Amazon.h"
 
 class Position;
 

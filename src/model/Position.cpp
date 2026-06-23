@@ -1,5 +1,5 @@
 #include "Position.h"
-#include "Board.h"
+#include "board/Board.h"
 
 Position::Position(int x,int y):m_x{x},m_y{y}{
 
