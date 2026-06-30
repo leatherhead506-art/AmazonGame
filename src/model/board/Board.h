@@ -47,7 +47,9 @@ public:
 
     void nextTurn();
 
-   
+    bool isAmazon(Position& position);
+
+    Amazon getAmazon(Position& position);
 
 
     std::string displayPiece(const Position& position);

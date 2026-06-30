@@ -67,6 +67,24 @@ bool Board::isOutOfBound(const Amazon& amazon)const{
 }
 
 
+bool Board::isAmazon(Position& position){
+    if( m_pieces[position.getX()][position.getY()]==Piece::AMAZON){
+        return true;
+    }
+    return false;
+}
+
+
+Amazon Board::getAmazon(Position& position){
+    for(Amazon& amazon : m_amazon_list){
+        if(amazon.getPosition().getX()== position.getX()&& 
+        amazon.getPosition().getY() == position.getY()){
+            return amazon;
+        }
+
+    }
+    return;
+}
 
 
 

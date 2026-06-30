@@ -12,6 +12,8 @@ Board board(p1, p2);
 
 void testSetAmazonPosition(){
     
+    board.setPiece(Piece::AMAZON,Position(1,1));
+    assert(board.isEmpty(Position(1,1)) == false);
 }
 
 
@@ -30,14 +32,12 @@ void testSetPiece(){
 
 void testIsOutOfBound(){
     
+    assert(board.isOutOfBound(Amazon(Position(9,1),Player(PlayerID::Player1)))==true);
+    assert(board.isOutOfBound(Amazon(Position(-1,1),Player(PlayerID::Player1)))==true);
+    assert(board.isOutOfBound(Amazon(Position(7,1),Player(PlayerID::Player1)))==false);
 }
 
 
-
-
-void testIsGameEnded(){
-
-}
 
 
 
@@ -59,7 +59,7 @@ int main(){
     testSetPiece();
     testIsEmpty();
 
-
+    testIsOutOfBound();
     std::cout << "All Amazon tests passed ✅" << std::endl;
     std::cout<< board.toString(8,8) << std::endl;
 

@@ -1,33 +1,22 @@
-# Compilateur
 CXX = g++
 
-# Options de compilation
-CXXFLAGS = -std=c++17 -Wall -Wextra -I../include
+CXXFLAGS = -std=c++17 -Wall -Wextra -I../src
 
-# Dossiers
-SRC_DIR = ../src
-TEST_DIR = .
+SRC = \
+../src/model/Position.cpp \
+../src/model/Amazon.cpp \
+../src/model/Direction.cpp \
+../src/model/player/Player.cpp \
+../src/model/board/Board.cpp
 
-# Fichiers sources du projet
-SRC = $(SRC_DIR)/Position.cpp \
-      $(SRC_DIR)/Board.cpp \
-      $(SRC_DIR)/Player.cpp \
-      $(SRC_DIR)/Direction.cpp \
-      $(SRC_DIR)/Amazon.cpp
+TESTS = $(wildcard test_*.cpp)
 
-# Tous les fichiers de test
-TESTS = $(wildcard $(TEST_DIR)/test_*.cpp)
-
-# Noms des exécutables
 TARGETS = $(TESTS:.cpp=)
 
-# Règle principale
 all: $(TARGETS)
 
-# Compilation de chaque test
-%: %.cpp $(SRC)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+%: %.cpp
+	$(CXX) $(CXXFLAGS) $< $(SRC) -o $@
 
-# Nettoyage
 clean:
 	rm -f $(TARGETS)

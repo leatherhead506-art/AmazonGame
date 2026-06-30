@@ -2,7 +2,7 @@
 #define GUICONTROLLER_H
 
 #include<vector>
-#include "../player/Player.h"
+#include "../model/player/Player.h"
 #include "../model/board/Board.h"
 
 
