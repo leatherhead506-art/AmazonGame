@@ -17,11 +17,21 @@ Board TerminalController::getBoard()const{
 
 
 void TerminalController::run(){
-
+    while(!this->m_board.isGameEnded()){
+        this->update();
+    }
+    if(this->m_board.getWinner()== PlayerID::Player1){
+        std::cout << "le joueur 1 a gagné" << std::endl;
+    }
+    else{
+        std::cout << "le joueur 2 a gagné" << std::endl;
+    }
+    
 }
 
 
 void TerminalController::update(){
+    
     int x_amazon;
     int y_amazon;
     int x_new_position;
@@ -34,6 +44,7 @@ void TerminalController::update(){
     std::cout<<"entre la coordonnéé y de l'amazone : "<<std::endl;
     std::cin>>y_amazon;
     Position amazonPosition = Position(x_amazon,y_amazon);
+
     while(!this->m_board.isAmazon(amazonPosition)){
         std::cout<<"tu t'es trompé sur la coordonée de l'amazon "<<std::endl;
 
@@ -80,6 +91,8 @@ void TerminalController::update(){
         arrowPosition = Position(x_arrow,y_arrow);
     }
     
+    Amazon amazon = this->m_board.getAmazon(amazonPosition);
+    this->m_board.update(amazon,newAmazonPosition,arrowPosition);
 
 
 

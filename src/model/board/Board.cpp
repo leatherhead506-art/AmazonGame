@@ -75,7 +75,7 @@ bool Board::isAmazon(Position& position){
 }
 
 
-Amazon Board::getAmazon(Position& position){
+Amazon& Board::getAmazon(Position& position){
     for(Amazon& amazon : m_amazon_list){
         if(amazon.getPosition().getX()== position.getX()&& 
         amazon.getPosition().getY() == position.getY()){
@@ -83,7 +83,7 @@ Amazon Board::getAmazon(Position& position){
         }
 
     }
-    return;
+    throw std::runtime_error("Amazon introuvable");
 }
 
 
