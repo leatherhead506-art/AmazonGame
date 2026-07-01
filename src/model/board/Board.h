@@ -57,6 +57,7 @@ public:
 
     std::string toString(int row, int column);
     
+    void displayBoard();
 
 private:
 

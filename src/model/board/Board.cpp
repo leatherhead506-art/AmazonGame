@@ -105,7 +105,7 @@ bool Board::isGameEnded()const{
 
     count = 0;
     for(const Amazon& amazon : getPlayerAmazons(m_player2)){
-                        count++;
+        count++;
         if(count == 4){
             if(amazon.availablePositions(*this).size()==0){
                 return true;
@@ -310,5 +310,10 @@ std::string Board::toString(int row, int column){
     return boardString;
 
     
+}
+
+
+void Board::displayBoard(){
+    std::cout<< this->toString(this->ROWS,this->COLUMNS)<<std::endl;
 }
 
