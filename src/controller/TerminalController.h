@@ -17,6 +17,11 @@ void run();
 
 Board getBoard()const;
 
+void getAmazonPosition(int x, int y, Position& amazonPosition);
+
+void updateAmazonPosition(int newX, int newY,Position& newAmazonPosition);
+
+void updateArrowPosition(int arrowX, int arrowY, Position& arrowPosition);
 
 private:
 

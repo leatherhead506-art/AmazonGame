@@ -1,5 +1,5 @@
 
-#include <SFML/Graphics.hpp>
+
 #include "controller/TerminalController.h"
 #include "controller/GUIController.h"
 
@@ -12,5 +12,6 @@ int main()
     
     TerminalController terminalGame = TerminalController(player1,player2);
     terminalGame.run();
+
     return 0;
 }

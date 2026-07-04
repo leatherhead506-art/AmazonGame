@@ -47,6 +47,10 @@ public:
 
     void nextTurn();
 
+    Player& getPlayerByTurn();
+
+    bool getAmazonPlayer(Amazon& amazon, Player& player);
+
     bool isAmazon(Position& position);
 
     Amazon& getAmazon(Position& position);
@@ -56,7 +60,7 @@ public:
 
 
     std::string toString(int row, int column);
-    
+
     void displayBoard();
 
 private:

@@ -224,6 +224,24 @@ void Board::update(Amazon& amazon, Position& newAmazonPos, Position& arrowPos){
 }
 
 
+bool Board::getAmazonPlayer(Amazon& testAmazon, Player& player){
+    for(Amazon& playerAmazon : this->getPlayerAmazons(player)){
+        if(testAmazon.getPosition().getX() == playerAmazon.getPosition().getX()
+        &&testAmazon.getPosition().getY() == playerAmazon.getPosition().getY()){
+            return true;
+        }
+    }
+    return false;
+}
+
+Player& Board::getPlayerByTurn(){
+    if(this->getTurnCount()%2 == 0){
+        return this->m_player1;
+    }
+    return this->m_player2;
+}
+
+
 
 
 

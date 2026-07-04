@@ -39,70 +39,108 @@ void TerminalController::update(){
     int x_arrow;
     int y_arrow;
 
-    std::cout<<"entre la coordonnéé x de l'amazone : "<<std::endl;
-    std::cin >>x_amazon ;
-    std::cout<<"entre la coordonnéé y de l'amazone : "<<std::endl;
-    std::cin>>y_amazon;
+
     Position amazonPosition = Position(x_amazon,y_amazon);
-
-    while(!this->m_board.isAmazon(amazonPosition)){
-        std::cout<<"tu t'es trompé sur la coordonée de l'amazon "<<std::endl;
-
-        std::cout<<"entre la bonne coordonnéé x de l'amazone : "<<std::endl;
-        std::cin >>x_amazon ;
-        std::cout<<"entre la bonne coordonnéé y de l'amazone : "<<std::endl;
-        std::cin>>y_amazon;
-        amazonPosition = Position(x_amazon,y_amazon);
-    }
+    this->getAmazonPosition(x_amazon,y_amazon,amazonPosition);
 
 
 
-
-
-
-    std::cout<<"entre la coordonnéé destination x de l'amazone : "<<std::endl;
-    std::cin >>x_new_position ;
-    std::cout<<"entre la coordonnéé destination y de l'amazone : "<<std::endl;
-    std::cin>>y_new_position;
     Position newAmazonPosition = Position(x_new_position,y_new_position);
-    while(!this->m_board.isEmpty(newAmazonPosition)){
-        std::cout<<"tu t'es trompé sur la coordonée destination de l'amazon "<<std::endl;
-
-        std::cout<<"entre la bonne coordonnéé destination x de l'amazone : "<<std::endl;
-        std::cin >>x_new_position ;
-        std::cout<<"entre la bonne coordonnéé destination y de l'amazone : "<<std::endl;
-        std::cin>>y_new_position;
-        newAmazonPosition = Position(x_new_position,y_new_position);
-    }
+    this->updateAmazonPosition(x_new_position,y_new_position,newAmazonPosition);
 
 
 
-
-
-
-    std::cout<<"entre la coordonnéé x de l'arrow : "<<std::endl;
-    std::cin >>x_arrow ;
-    std::cout<<"entre la coordonnéé y de l'arrow: "<<std::endl;
-    std::cin>>y_arrow;
     Position arrowPosition = Position(x_arrow,y_arrow);
+    this->updateArrowPosition(x_arrow,y_arrow,arrowPosition);
 
-    while(!this->m_board.isEmpty(arrowPosition)){
-        std::cout<<"tu t'es trompé sur la coordonée de l'arrow "<<std::endl;
 
-        std::cout<<"entre la bonne coordonnéé destination x de l'arrow : "<<std::endl;
-        std::cin >>x_arrow ;
-        std::cout<<"entre la bonne coordonnéé destination y de l'arrow : "<<std::endl;
-        std::cin>>y_arrow;
-        arrowPosition = Position(x_arrow,y_arrow);
-    }
     
     Amazon amazon = this->m_board.getAmazon(amazonPosition);
     this->m_board.update(amazon,newAmazonPosition,arrowPosition);
 
 
-
-
+    this->m_board.nextTurn();
+    
 
 }
 
+
+void TerminalController::getAmazonPosition(int x, int y, Position& amazonPosition){
+    std::cout<<"entre la coordonnéé x de l'amazone : "<<std::endl;
+    std::cin >>x ;
+    std::cout<<"entre la coordonnéé y de l'amazone : "<<std::endl;
+    std::cin>>y;
+    amazonPosition = Position(x,y);
+
+
+
+    while(!this->m_board.isAmazon(amazonPosition)
+        || !this->m_board.getAmazonPlayer(this->m_board.getAmazon(amazonPosition),
+            this->m_board.getPlayerByTurn())){
+
+        std::cout<<"tu t'es trompé sur la coordonée de l'amazon ou tu as selectionné l'amazone d'un autre joueuer"<<std::endl;
+
+            
+
+        std::cout<<"entre la bonne coordonnéé x de l'amazone : "<<std::endl;
+        std::cin >>x;
+        std::cout<<"entre la bonne coordonnéé y de l'amazone : "<<std::endl;
+        std::cin>>y;
+        amazonPosition = Position(x,y);
+    
+
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+void TerminalController::updateAmazonPosition(int newX, int newY, Position& newAmazonPosition){
+
+
+
+    std::cout<<"entre la coordonnéé destination x de l'amazone : "<<std::endl;
+    std::cin >>newX ;
+    std::cout<<"entre la coordonnéé destination y de l'amazone : "<<std::endl;
+    std::cin>>newY;
+    newAmazonPosition = Position(newX,newY);
+    while(!this->m_board.isEmpty(newAmazonPosition)){
+        std::cout<<"tu t'es trompé sur la coordonée destination de l'amazon "<<std::endl;
+
+        std::cout<<"entre la bonne coordonnéé destination x de l'amazone : "<<std::endl;
+        std::cin >>newX ;
+        std::cout<<"entre la bonne coordonnéé destination y de l'amazone : "<<std::endl;
+        std::cin>>newY;
+        newAmazonPosition = Position(newX,newY);
+    }
+
+}
+
+
+
+void TerminalController::updateArrowPosition(int arrowX, int arrowY, Position& arrowPosition){
+
+    std::cout<<"entre la coordonnéé x de l'arrow : "<<std::endl;
+    std::cin >>arrowX;
+    std::cout<<"entre la coordonnéé y de l'arrow: "<<std::endl;
+    std::cin>>arrowY;
+    arrowPosition = Position(arrowX,arrowY);
+
+    while(!this->m_board.isEmpty(arrowPosition)){
+        std::cout<<"tu t'es trompé sur la coordonée de l'arrow "<<std::endl;
+
+        std::cout<<"entre la bonne coordonnéé destination x de l'arrow : "<<std::endl;
+        std::cin >>arrowX ;
+        std::cout<<"entre la bonne coordonnéé destination y de l'arrow : "<<std::endl;
+        std::cin>>arrowY;
+        arrowPosition = Position(arrowX,arrowY);
+    }
+}
 
