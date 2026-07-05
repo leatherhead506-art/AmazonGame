@@ -38,7 +38,7 @@ std::vector<Position> Amazon::availablePositions(const Board& board)const{
         int newX = getPosition().getX()+ newDirection.getX();
         int newY = getPosition().getY()+ newDirection.getY();
         Position newPos(newX,newY);
-        while(!board.isOutOfBound(*this) && board.isEmpty(newPos)){
+        while(!newPos.isOutOfBound(board) && board.isEmpty(newPos)){
             positions.push_back(newPos);
             newX += newDirection.getX();
             newY += newDirection.getY();

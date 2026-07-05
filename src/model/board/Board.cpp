@@ -204,7 +204,6 @@ void Board::moveAmazon(Amazon& amazon, const Position& position){
 
 void Board::throwArrow(Amazon& amazon,const Position& position){
         if(amazon.canMoveTo(*this,position)){
-            std::cout<<"yes it can throw arrow"<<std::endl;
             this->setPiece(Piece::ARROW,position);
         }
         else{
