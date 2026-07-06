@@ -10,17 +10,22 @@ class GuiController{
 
 public:
 
-    GuiController(Player& player1, Player& player2, Board& board);
+    GuiController(Player& player1, Player& player2);
 
 
 
     void run();
+
+    void displayGui();
+
+    void update();
 
 
 
 
 private:
 
+    Board m_board;
 
 };
 

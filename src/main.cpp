@@ -11,7 +11,10 @@ int main()
     Player player2 = Player(PlayerID::Player2);
     
     TerminalController terminalGame = TerminalController(player1,player2);
-    terminalGame.run();
+    GuiController guiGame = GuiController(player1,player2);
+    
+    //terminalGame.run();
+    guiGame.displayGui();
 
     return 0;
 }
