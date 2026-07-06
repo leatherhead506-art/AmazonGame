@@ -40,5 +40,6 @@ void GuiController::displayGui(){
         window.clear();
         window.display();
     }
+    
 
 }
