@@ -21,6 +21,9 @@ void GuiController::update(){
 
 }
 
+
+
+
 void GuiController::displayGui(){
 
     sf::RenderWindow window(sf::VideoMode(800,800),"Amazon Game");
@@ -30,16 +33,23 @@ void GuiController::displayGui(){
         sf::Event event;
 
         while(window.pollEvent(event)){
+
             if(event.type == sf::Event::Closed){
                 window.close();
             }
-            if(event.type == sf::Event::MouseButtonPressed){
 
+
+            if(event.type == sf::Event::MouseButtonPressed){
+                
             }
         }
+
         window.clear();
         window.display();
     }
-    
+
 
 }
+
+
+
