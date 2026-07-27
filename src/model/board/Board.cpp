@@ -334,3 +334,8 @@ void Board::displayBoard(){
     std::cout<< this->toString(this->ROWS,this->COLUMNS)<<std::endl;
 }
 
+
+
+Piece Board::getPiece(const Position& position) const{
+    return this->m_pieces[position.getX()][position.getY()];
+}

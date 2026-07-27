@@ -63,6 +63,8 @@ public:
 
     void displayBoard();
 
+    Piece getPiece(const Position& position) const;
+
 private:
 
     std::vector<Amazon> m_amazon_list;
