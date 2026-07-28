@@ -8,6 +8,17 @@
 #include "../model/Position.h"
 
 
+enum class SelectionState{
+
+    SelectingAmazon,
+    SelectingDestination,
+    SelectingArrow
+
+};
+
+
+
+
 class GuiController{
 
 public:
@@ -29,6 +40,15 @@ private:
     Board m_board;
     sf::RenderWindow m_window;
     static const int CELL_SIZE = 100;
+    SelectionState m_state;
+    Position m_selectedAmazonPos;
+    Position m_selectedDesinationPos;
+    Position m_selectedArrowPos;
 };
+
+
+
+
+
 
 #endif

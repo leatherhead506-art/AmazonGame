@@ -4,6 +4,9 @@
 Position::Position(int x,int y):m_x{x},m_y{y}{
 
 }
+Position::Position(){
+    
+}
 
 int Position::getX()const{
     return this->m_x;
