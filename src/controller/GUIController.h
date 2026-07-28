@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../model/player/Player.h"
 #include "../model/board/Board.h"
+#include "../model/Position.h"
 
 
 class GuiController{
