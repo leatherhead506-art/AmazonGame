@@ -14,7 +14,7 @@ int main()
     GuiController guiGame = GuiController(player1,player2);
     
     //terminalGame.run();
-    guiGame.displayGui();
+    guiGame.run();
 
     return 0;
 }

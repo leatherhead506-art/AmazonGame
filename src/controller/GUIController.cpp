@@ -14,6 +14,8 @@ void GuiController::run(){
     while(m_window.isOpen()){
         this->update();
         this->displayGui();
+        
+        
     }
 }
 
@@ -42,6 +44,7 @@ void GuiController::displayGui(){
 
     m_window.clear();
     //dessiner le plateau, les amazones, les flèches...
+    this->drawBoard();
     m_window.display();
 
 
@@ -49,25 +52,24 @@ void GuiController::displayGui(){
 
 
 void GuiController::drawBoard(){
+
+
     for(int row = 0; row < this->m_board.ROWS; row++){
-        bool isBeige = true;
+
         for(int column = 0; column < this->m_board.COLUMNS;column++){
+
             sf::RectangleShape rectangle(sf::Vector2f(CELL_SIZE,CELL_SIZE));
             rectangle.setPosition(sf::Vector2f(row * CELL_SIZE, column * CELL_SIZE));
-            if(isBeige){
-                rectangle.setFillColor(sf::Color(240,217,181));
-                isBeige = false;
+            
+            if((row + column) % 2 == 0){
+                rectangle.setFillColor(sf::Color(181,136,99));
+
             }
             else{
                 rectangle.setFillColor(sf::Color(255,255,255));
-                isBeige = true;
+            
             }
-        }
-        if(isBeige){
-            isBeige = false;
-        }
-        else{
-            isBeige = true;
+            m_window.draw(rectangle);
         }
     }
 }
@@ -76,5 +78,5 @@ void GuiController::drawBoard(){
 
 
 void GuiController::drawPieces(){
-    
+
 }
